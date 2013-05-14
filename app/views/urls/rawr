@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Welcome to Fab and Mac's Awesome Url Shortener!</h1>
+  <p>Hello, world!</p>
+
+  <ul>
+    <% @list_short_urls.select{|u| u.short}.each  do |url| %>
+      <li><%= link_to url.short, super_short_path(url.short) %>
+        <%= url.click_count %>  Clicks</li>
+    <% end %>
+  </ul>
+
+  <%= form_for @url do |f| %>
+    Your url: <%= f.text_field :long, value: "http://" %>
+    <%= f.submit %>
+  <% end %>
+
+    <p><%= @error %></p>
+</div>
